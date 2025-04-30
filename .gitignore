@@ -1,3 +1,5 @@
 .venv
 datasource
 .idea
+elastic_checkpoint.json
+postgres_checkpoint.json
