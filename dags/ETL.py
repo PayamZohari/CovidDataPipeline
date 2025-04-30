@@ -40,7 +40,7 @@ def etl_pipeline():
 
     @task()
     def extract_from_elasticsearch():
-        url = f"{ES_HOST}/{INDEX_NAME}/_search"
+        url = f"{ES_HOST_CONTAINER}/{INDEX_NAME}/_search"
         query = {
             "query": {"match_all": {}},
             "size": 10000
