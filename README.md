@@ -23,7 +23,11 @@ Visualization and dashboarding
    
 In this section, collected covid-related records of data from hospitals which are gathered in a .csv file are provided and to persist it more seamlessly, I have implemented a python job ( ingest_elastic_to_csv.py ) Which reads data (batchwise) from csv file and inserts to elastic.
 
-To avoid data loss and inconsistency, after each insert, checkpoints the offset to a .Jason file and at the beginning of next batch, it reads the checkpoint to read from next offset.
+To avoid data loss and inconsistency, after each insert, **checkpoints** the offset to a .Jason file and at the beginning of next batch, it reads the checkpoint to read from next offset.
+
+sample content of elastic_checkpoint.json :
+
+{"last_processed_row": 18700}
 
 sample output of ingestion process:
 
@@ -115,7 +119,7 @@ the final output of dashboards:
    ```bash
    docker composed up [-d]
    ```
-now elastic is running on port 9200 (without web UI), airflow on port 8080, postgres on port 5432 (without web UI), and metabase on port 3000
+now elastic is running on port 9200 (without web UI), airflow on port 8080, postgres on port 5432 (without web UI but PGadmin was used for development process), and metabase on port 3000
 
 to enable ariflow log the job runs you need to give permission to the user to make change on ./logs, ./dags, ./plugins.\
 
