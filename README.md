@@ -61,7 +61,11 @@ Batch 40 insert status: 200
 
 2. ETL
 In this section, the raw data in the elastic is needed to be cleaned and processed, and then get inserted to the data warehouse (postgres) to be visualized.
-To do so, I implemented a ETL process, including below three tasks
+To do so, I implemented a ETL process,  with **checkpoint** to make consistent process without data loss, including below 3 + 1 tasks
+
+### load checkpoint
+
+read last checkpoints before read and insert each batch and also checkpoints after each successful batch insert, to avoid data loss and provide consistency.
 
 ### extract
 
@@ -74,8 +78,8 @@ process and clean up the data, use only metrics and dimensions valuable to be us
 
 insert the transformed data to DW ( postures)
 
-But since the .csv data might be an stream of data ( never ending ), the first job ( ingestion ) is designed to continously ingest rest of stream. For ETL though, a periodic (hourly) job is needed to do it on new data every hour ( least period interval in airflow )
-That's why this job is written as a DAG ( directed acyclic graph ) where there are depencies ( transform task depends on extract, and load depends on transform )
+But since the .csv data might be a fixed data or an stream of data ( never ending ), the first job ( ingestion ) is designed to continously ingest rest of stream. For ETL though, a periodic (hourly) job is needed to do it on new data every hour ( least period interval in airflow )
+That's why this job is written as a DAG ( directed acyclic graph ) where there are depencies ( transform task depends on extract, and load depends on transform ). To be failure tolerant, the ETL process also uses checkpointing.
 
 3. USE
 
@@ -121,7 +125,7 @@ the final output of dashboards:
    ```
 now elastic is running on port 9200 (without web UI), airflow on port 8080, postgres on port 5432 (without web UI but PGadmin was used for development process), and metabase on port 3000
 
-to enable ariflow log the job runs you need to give permission to the user to make change on ./logs, ./dags, ./plugins.\
+to enable ariflow log the job runs you need to give permission to the user to make change on ./logs, ./dags, ./plugins and ./checkpoints.
 
 6. Run the ingestion
    

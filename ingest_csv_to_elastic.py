@@ -15,8 +15,9 @@ ES_USER = config("ES_USER")
 ES_PASSWORD = config("ES_PASSWORD")
 INDEX_NAME = config("INDEX_NAME")
 
+#collected data path
 CSV_FILE_PATH = "datasource/COVID-19-Activity.csv"
-CHECKPOINT_FILE = "elastic_checkpoint.json"
+CHECKPOINT_FILE = "checkpoints/elastic_checkpoint.json"
 BATCH_SIZE = 100
 
 # Function to read checkpoint
