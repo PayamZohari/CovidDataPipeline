@@ -88,5 +88,26 @@ after batch 90 ( 9000 records )
 1. clone the project
    
    ```bash
-   git clone 
+   git clone git@github.com:PayamZohari/CovidDataPipeline.git
    ```
+
+2. install requirements
+   
+   pip3 install -r requirements
+
+3. look into .env file which contains necessary credentials for the project.
+
+4. set up project pipeline
+
+   ```bash
+   docker composed up [-d]
+   ```
+
+5. Run the ingestion
+   
+   ```bash
+   python3 ingest_csv_to_elastic.py
+   ```
+6. Log into visualization
+
+go to host:3000 to see metabase  dashboard. in Analytical dashboard you can see on tab 1 there is 3 visualization as illustrated in the picture
