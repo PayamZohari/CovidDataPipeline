@@ -11,7 +11,7 @@ data source
 ## Apache Airflow ( dockerized ): 
 scheduler and orchestrator
 
-## Postures ( dockerized ):
+## Postgres ( dockerized ):
 OLTP Data warehouse 
 
 ## metabase ( dockerized ):
