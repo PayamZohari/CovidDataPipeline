@@ -110,15 +110,15 @@ the final output of dashboards:
    
    pip3 install -r requirements
 
-   then load .csv data file via
+   then download the .csv data file via https://drive.google.com/file/d/1vL9-7EcFicTR1j4bnWkwt_wf25k0wKnK/view?usp=sharing
 
    ```bash
-   cp covid.csv ./datasource/usa_covid.csv
+   cp /your/path/to/downloads/COVID-19-Activity.csv ./datasource/COVID-19-Activity.csv
    ```
 
-4. look into .env file which contains necessary credentials for the project.
+3. look into .env file which contains necessary credentials for the project.
 
-5. set up project pipeline
+4. set up project pipeline
 
    ```bash
    docker composed up [-d]
@@ -127,13 +127,13 @@ now elastic is running on port 9200 (without web UI), airflow on port 8080, post
 
 to enable ariflow log the job runs you need to give permission to the user to make change on ./logs, ./dags, ./plugins and ./checkpoints.
 
-6. Run the ingestion
+5. Run the ingestion
    
    ```bash
    python3 ingest_csv_to_elastic.py
    ```
    
-7. ETL job monitoring
+6. ETL job monitoring
 
 you can monitor ETL process from Airflow web UI. 
 
@@ -151,7 +151,7 @@ by clicking on it you should see a dashboard like below:
 here you can see when the previous run was and when will the next run be scheduled (after getting active it would run, and afterwards just one run per hour)
 
 
-8. Log into visualization
+7. Log into visualization
 
 now that you have seen the ETL process is working, it's time to use it's data through metabase. To do so, go on port 3000 to see metabase dashboard.
 
