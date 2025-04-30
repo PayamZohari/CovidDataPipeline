@@ -17,7 +17,7 @@ OLTP Data warehouse
 ## metabase ( dockerized ):
 Visualization and dashboarding
 
-#Steps
+# steps
 
 1. Capture & Ingest
    
@@ -87,7 +87,7 @@ The overview of dashboards can be seen in below images. after 30 and 90 batch jo
 
 the final output of dashboards:
 
-![final-dashbaords-overview.png](plots/final-dashbaords-overview.png)
+![metabase-final-dashboard.png](plots/metabase-final-dashboard.png)
 
 
 # How run the project
@@ -116,6 +116,8 @@ the final output of dashboards:
    docker composed up [-d]
    ```
 now elastic is running on port 9200 (without web UI), airflow on port 8080, postgres on port 5432 (without web UI), and metabase on port 3000
+
+to enable ariflow log the job runs you need to give permission to the user to make change on ./logs, ./dags, ./plugins.\
 
 6. Run the ingestion
    
@@ -147,5 +149,5 @@ now that you have seen the ETL process is working, it's time to use it's data th
 
 you can login by credentials provided in .env ("metabase_ui_user" for username and "metabase_ui_password" for it's password)
 
-go through Our Analytic collection, go to Covid dashboard, and there you can see on tab1 there are 3 visualizations as illustrated in the picture. 
+go through Our Analytic collection, go to Covid dashboard, and there you can see on tab1 there are 5 visualizations as illustrated in the picture. 
 

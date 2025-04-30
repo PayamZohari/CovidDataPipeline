@@ -85,16 +85,12 @@ def etl_pipeline():
         )
         cur = conn.cursor()
 
-        # Create table if it doesn't exist
-        cur.execute("""
-        CREATE TABLE IF NOT EXISTS covid_cases (
-            date DATE,
-            state TEXT,
-            county TEXT,
-            new_cases INTEGER,
-            new_deaths INTEGER
-        );
-        """)
+        # Read and execute SQL from script file
+        with open('./scripts/postgres_db_scripts.sql', 'r') as file:
+            sql_script = file.read()
+
+        cur.execute(sql_script)
+        conn.commit()
 
         # Insert data
         for row in data:
