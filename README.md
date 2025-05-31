@@ -1,5 +1,5 @@
 # Overview
-This project is part of Mofid Securities Interview task which aimes to design and implement a data pipeline to collect, ingestion, store, process and finally visualize statistics regarding Covid-19 cases in U.S.A. The pipeline is illustrated in the diagram below:
+This project aimes to design and implement a data pipeline to collect, ingestion, store, process and finally visualize statistics regarding Covid-19 cases in U.S.A. The pipeline is illustrated in the diagram below:
 
 ![data pipeline overview.png](plots/data%20pipeline%20overview.png)
 
